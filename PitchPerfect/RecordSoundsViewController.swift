@@ -59,7 +59,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
         session.setCategory(AVAudioSessionCategoryRecord, error: nil)
         
         audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
-        
+        recordedAudio = RecordedAudio(filePathUrl: audioRecorder.url, title: audioRecorder.url.lastPathComponent!)
         
         // Hide the label after 3 seconds
         colorUtil.delay(threeSeconds) {
@@ -101,11 +101,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag) {
             // This is necessary to have the play with audible audio
-            revertCategoryToPlayBack()
-            
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            revertCategoryToPlayBack()            
             self.performSegueWithIdentifier(recordSegueName, sender: recordedAudio)
         } else {
             var alert = UIAlertController(title: "Recording Failed", message: "Recording audio has finished with problem. Please try again.", preferredStyle: UIAlertControllerStyle.Alert)

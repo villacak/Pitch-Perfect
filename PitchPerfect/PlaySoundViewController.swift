@@ -39,6 +39,10 @@ class PlaySoundViewController: UIViewController {
         case rate, pitch
     }
     
+    enum ButtonsNames {
+        case playSlow, playFast, chipmunk, darthVader
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,47 +62,30 @@ class PlaySoundViewController: UIViewController {
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
     // Acion called when tap the snail button
     @IBAction func playSlowAction(sender: UIButton) {
-        playSlowButton.enabled = false
-        playFastButton.enabled = true
-        chipmunkButton.enabled = true
-        darthVaderButton.enabled = true
+        disableSelectedButton(ButtonsNames.playSlow)
         playSound(0.5, typeForAudio: PitchOrRate.rate)
     }
     
     
     // Acion called when tap the snail button
     @IBAction func playFastACtion(sender: UIButton) {
-        playSlowButton.enabled = true
-        playFastButton.enabled = false
-        chipmunkButton.enabled = true
-        darthVaderButton.enabled = true
+        disableSelectedButton(ButtonsNames.playFast)
         playSound(2.0, typeForAudio: PitchOrRate.rate)
     }
     
     
     // Acion called when tap the chipmunk button
     @IBAction func chipmunkAction(sender: UIButton) {
-        playFastButton.enabled = true
-        playSlowButton.enabled = true
-        chipmunkButton.enabled = false
-        darthVaderButton.enabled = true
+        disableSelectedButton(ButtonsNames.chipmunk)
         playSound(1000, typeForAudio: PitchOrRate.pitch)
     }
     
     
     // Acion called when tap the darth vader button
     @IBAction func darthVaderAction(sender: UIButton) {
-        playFastButton.enabled = true
-        playSlowButton.enabled = true
-        chipmunkButton.enabled = true
-        darthVaderButton.enabled = false
+        disableSelectedButton(ButtonsNames.darthVader)
         playSound(-1000, typeForAudio: PitchOrRate.pitch)
     }
     
@@ -150,6 +137,27 @@ class PlaySoundViewController: UIViewController {
         
         audioPlayerNode!.play()
     }
+    
+    
+    // Function to disable selected button
+    func disableSelectedButton(buttonToDisable: ButtonsNames) {
+        enableAllButtons()
+        
+        switch buttonToDisable {
+        case .playSlow:
+                playSlowButton.enabled = false
+            
+        case .playFast:
+                playFastButton.enabled = false
+            
+        case .chipmunk:
+                chipmunkButton.enabled = false
+            
+        case .darthVader:
+                darthVaderButton.enabled = false
+        }
+    }
+    
     
     
     // Function to enable all buttons
