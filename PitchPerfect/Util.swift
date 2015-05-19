@@ -18,4 +18,18 @@ class Util: NSObject {
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
+    
+    
+    /*
+     * Function copied from
+     * http://stackoverflow.com/questions/28192538/ios-swift-countdown-need-to-show-text-after-2-seconds-and-hide-it-after-6-seco
+     */
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
 }

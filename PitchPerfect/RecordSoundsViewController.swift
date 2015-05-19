@@ -13,7 +13,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
     
     // Static segue name, to avoid have duplicated strings across the code.
     let recordSegueName: String = "stopRecordingToPlaySegue"
-    
+    let threeSeconds: Double = 3.0
     
     // Background colors
     let lightBlue: UInt32 = 0x74A7FA
@@ -25,8 +25,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordingView: UIView!
-    
-    
+    @IBOutlet weak var labelTip: UILabel!
     
     // Declare variables
     var audioRecorder: AVAudioRecorder!
@@ -41,11 +40,32 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
         
         // Set the background color
         self.recordingView.backgroundColor = colorUtil.UIColorFromHex(lightBlue, alpha: 0.9)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Initialise vars to create the file name
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        
+        let currentDateTime = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "ddMMyyyy-HHmmss"
+        let recordingName = formatter.stringFromDate(currentDateTime)+".wav"
+        let pathArray = [dirPath, recordingName]
+        
+        // Initialize the NSURL with the file path and file name
+        let filePath = NSURL.fileURLWithPathComponents(pathArray)
+        
+        session = AVAudioSession.sharedInstance()
+        
+        // Set session for Record to avoid recording very quiet sounds
+        session.setCategory(AVAudioSessionCategoryRecord, error: nil)
+        
+        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+        
+        
+        // Hide the label after 3 seconds
+        colorUtil.delay(threeSeconds) {
+            self.labelTip.hidden = true
+        }
+        
     }
     
     
@@ -63,20 +83,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate, AVA
         
         self.recordingView.backgroundColor = colorUtil.UIColorFromHex(slightRed, alpha: 0.9)
         
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        
-        let currentDateTime = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "ddMMyyyy-HHmmss"
-        let recordingName = formatter.stringFromDate(currentDateTime)+".wav"
-        let pathArray = [dirPath, recordingName]
-        let filePath = NSURL.fileURLWithPathComponents(pathArray)
-//        println(filePath)
-        
-        session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryRecord, error: nil)
-        
-        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()

@@ -203,10 +203,35 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qOB-a8-dDh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the microphone to start recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wz1-yQ-TJy">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wz1-yQ-TJy" secondAttribute="height" multiplier="311:21" id="1TL-wG-TSu">
+                                        <variation key="widthClass=compact" constant="-22"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1TL-wG-TSu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1TL-wG-TSu"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="91X-IP-0yy" secondAttribute="centerX" id="6pp-7r-vNP"/>
+                            <constraint firstItem="NxX-qL-me0" firstAttribute="top" secondItem="wz1-yQ-TJy" secondAttribute="bottom" constant="-242" id="7XZ-pr-Nk6"/>
+                            <constraint firstAttribute="centerX" secondItem="wz1-yQ-TJy" secondAttribute="centerX" id="DCo-JZ-naL">
+                                <variation key="widthClass=compact" constant="-2.5"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="91X-IP-0yy" secondAttribute="bottom" constant="53" id="I32-N7-62Q">
                                 <variation key="widthClass=compact" constant="55"/>
                             </constraint>
@@ -223,15 +248,18 @@
                                 <exclude reference="NxX-qL-me0"/>
                                 <exclude reference="R6S-nV-5mw"/>
                                 <exclude reference="91X-IP-0yy"/>
+                                <exclude reference="wz1-yQ-TJy"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DCo-JZ-naL"/>
+                                <exclude reference="7XZ-pr-Nk6"/>
+                                <exclude reference="gH2-0d-2YH"/>
+                                <exclude reference="ote-5Y-atD"/>
                                 <exclude reference="JvO-i8-3f0"/>
                                 <exclude reference="RsU-Fv-3z1"/>
                                 <exclude reference="6pp-7r-vNP"/>
                                 <exclude reference="I32-N7-62Q"/>
                                 <exclude reference="l5i-8b-na1"/>
-                                <exclude reference="gH2-0d-2YH"/>
-                                <exclude reference="ote-5Y-atD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -239,20 +267,24 @@
                                 <include reference="NxX-qL-me0"/>
                                 <include reference="R6S-nV-5mw"/>
                                 <include reference="91X-IP-0yy"/>
+                                <include reference="wz1-yQ-TJy"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DCo-JZ-naL"/>
+                                <include reference="7XZ-pr-Nk6"/>
+                                <include reference="gH2-0d-2YH"/>
+                                <include reference="ote-5Y-atD"/>
                                 <include reference="JvO-i8-3f0"/>
                                 <include reference="RsU-Fv-3z1"/>
                                 <include reference="6pp-7r-vNP"/>
                                 <include reference="I32-N7-62Q"/>
                                 <exclude reference="l5i-8b-na1"/>
-                                <include reference="gH2-0d-2YH"/>
-                                <include reference="ote-5Y-atD"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="782-oM-bxt"/>
                     <connections>
+                        <outlet property="labelTip" destination="wz1-yQ-TJy" id="Cbs-ZM-lPY"/>
                         <outlet property="recordingButton" destination="NxX-qL-me0" id="pha-nb-n94"/>
                         <outlet property="recordingLabel" destination="R6S-nV-5mw" id="XlL-V0-D38"/>
                         <outlet property="recordingView" destination="8bC-Xf-vdC" id="Epr-n2-s31"/>

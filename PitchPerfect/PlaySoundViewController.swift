@@ -54,7 +54,6 @@ class PlaySoundViewController: UIViewController {
         // If something goes wrong when initializing audioFile, we can get the error
         if let e = error {
             alert(e.localizedDescription, titleStr: "Error")
-//            println(e.localizedDescription)
         }
     }
     
@@ -109,8 +108,12 @@ class PlaySoundViewController: UIViewController {
         enableAllButtons()
         if let isStillWorking = audioPlayerNode {
             isStillWorking.stop()
-            isStillWorking.stop()
             isStillWorking.reset()
+        }
+        
+        if let isStillEngine = audioEngine {
+            isStillEngine.stop()
+            isStillEngine.reset()
         }
     }
     
@@ -118,8 +121,9 @@ class PlaySoundViewController: UIViewController {
     // Common function to play sounds
     func playSound(valueForAudioType: Float, typeForAudio: PitchOrRate) {
         audioPlayerNode = AVAudioPlayerNode()
-        
         audioPlayerNode!.stop()
+        audioPlayerNode!.reset()
+        
         audioEngine!.stop()
         audioEngine!.reset()
         
@@ -142,7 +146,6 @@ class PlaySoundViewController: UIViewController {
         audioEngine!.startAndReturnError(&error)
         if let e = error {
             alert(e.localizedDescription, titleStr: "Error")
-//            println(e.localizedDescription)
         }
         
         audioPlayerNode!.play()

@@ -17,7 +17,6 @@
 		332563511B02DEB1005B5A9B /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332563501B02DEB1005B5A9B /* PlaySoundViewController.swift */; };
 		336C56351B082AF700244CE7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336C56341B082AF700244CE7 /* Util.swift */; };
 		33943BA71B062B90002DF1C0 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33943BA61B062B90002DF1C0 /* RecordedAudio.swift */; };
-		33A8E9C91B02FD750077D2D2 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 33A8E9C81B02FD750077D2D2 /* movie_quote.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		332563501B02DEB1005B5A9B /* PlaySoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
 		336C56341B082AF700244CE7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		33943BA61B062B90002DF1C0 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
-		33A8E9C81B02FD750077D2D2 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 		3325631B1AFDB560005B5A9B = {
 			isa = PBXGroup;
 			children = (
-				33A8E9C71B02FD2E0077D2D2 /* resources */,
 				332563261AFDB560005B5A9B /* PitchPerfect */,
 				3325633F1AFDB560005B5A9B /* PitchPerfectTests */,
 				332563251AFDB560005B5A9B /* Products */,
@@ -125,14 +122,6 @@
 				332563411AFDB560005B5A9B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		33A8E9C71B02FD2E0077D2D2 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				33A8E9C81B02FD750077D2D2 /* movie_quote.mp3 */,
-			);
-			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +207,6 @@
 			files = (
 				332563321AFDB560005B5A9B /* Main.storyboard in Resources */,
 				332563371AFDB560005B5A9B /* LaunchScreen.xib in Resources */,
-				33A8E9C91B02FD750077D2D2 /* movie_quote.mp3 in Resources */,
 				332563341AFDB560005B5A9B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
